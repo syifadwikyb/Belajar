@@ -1,16 +1,21 @@
 # 🌟 Create React + Vite Project with Tailwind CSS
 
 ### Create New Project React.js
+```
 npm create vite@latest (project-name) -- --template react
 cd (project-name)
 npm install
 npm run dev
+```
 
 ### Install Tailwind.css
+```
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
+```
 
-Konfigurasi Tailwind di tailwind.config.js
+### Tailwind.config.js
+```
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -26,14 +31,19 @@ module.exports = {
   },
   plugins: [],
 }
+```
 
 ### App.css
+```
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+```
 
 ### Open Terminal
+```
 npm run dev
+```
 
 ### Documentations
 - 📖 [Dokumentasi Vite](https://vitejs.dev/guide/)
