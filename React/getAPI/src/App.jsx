@@ -40,6 +40,7 @@ export default function App() {
   );
 }
 
+// VERSI LENGKAP
 // export default function App() {
 //   const [popularMovies, setPopularMovies] = useState([]);
 
