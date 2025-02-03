@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { getSurahList } from "./api";
+import { useEffect } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [surah, setSurah] = useState([]);
+
+  useEffect(() => {
+    getSurahList().then(setSurah).catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    const handlePlay = (event) => {
+      document.querySelectorAll("audio").forEach((audio) => {
+        if (audio !== event.target) {
+          audio.pause();
+        }
+      });
+    };
+
+    document.addEventListener("play", handlePlay, true);
+
+    return () => {
+      document.removeEventListener("play", handlePlay, true);
+    };
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="bg-slate-800 min-w-full mx-auto text-center">
+      <div className="rounded-lg">
+        <div className="grid grid-cols-4 gap-6">
+          {surah.map((surat) => (
+            <div className="bg-white" key={surat.nomor}>
+              <h3>{surat.nama}</h3>
+              <h2>{surat.nama_latin}</h2>
+              <p dangerouslySetInnerHTML={{ __html: surat.deskripsi }}></p>
+              <audio controls>
+                <source src={surat.audio} type="audio/mpeg" />
+                Browser tidak mendukung audio.
+              </audio>
+            </div>
+          ))}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
-
-export default App
