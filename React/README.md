@@ -56,8 +56,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Halaman yang dipilih/>
-  }
+    element: <Halaman yang dipilih/>,
+  },
+  {
+    path: "/",
+    element: <Halaman yang dipilih/>,
+  },
 ])
 
 createRoot(document.getElementById('root')).render(
