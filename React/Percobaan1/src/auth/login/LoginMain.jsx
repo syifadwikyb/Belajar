@@ -1,9 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import BorderButton from "../../component/Button";
 import FormLabel from "../FormLabel";
 import "../../App.css";
 import FooterAuth from "../FooterAuth";
 
-export default function LoginMain({type = "login"}) {
+export default function LoginMain({ type = "login" }) {
+  const navigate = useNavigate();
+
+  const HandleLogin = (event) => {
+    event.preventDefault();
+    localStorage.setItem('email', event.target.email.value);
+    localStorage.setItem('password', event.target.password.value);
+    console.log("Login");
+    navigate("/products");
+  }
+
   return (
     <div className="flex justify-center items-center min-h-screen w-screen">
       <div className="w-full max-w-xs">
@@ -11,7 +22,7 @@ export default function LoginMain({type = "login"}) {
         <p className="font-medium text-slate-500 mb-8">
           Welcome, please enter your detail
         </p>
-        <form action="">
+        <form onSubmit={HandleLogin}>
           <FormLabel
             inputName="email"
             labelName="Email"
@@ -25,10 +36,11 @@ export default function LoginMain({type = "login"}) {
             inputType="password"
             placeholder="********"
           />
+
+          <BorderButton text="Login" type="submit"/>
         </form>
 
-        <BorderButton text="Login" />
-        <FooterAuth type={type}/>
+        <FooterAuth type={type} />
       </div>
     </div>
   );
