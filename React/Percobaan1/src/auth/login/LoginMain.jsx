@@ -3,6 +3,7 @@ import BorderButton from "../../component/Button";
 import FormLabel from "../FormLabel";
 import "../../App.css";
 import FooterAuth from "../FooterAuth";
+import { Container } from "postcss";
 
 export default function LoginMain({ type = "login" }) {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export default function LoginMain({ type = "login" }) {
   }
 
   return (
+    <Container>
     <div className="flex justify-center items-center min-h-screen w-screen">
       <div className="w-full max-w-xs">
         <h1 className="text-3xl font-bold mb-2 text-blue-600">Login</h1>
@@ -43,5 +45,6 @@ export default function LoginMain({ type = "login" }) {
         <FooterAuth type={type} />
       </div>
     </div>
+    </Container>
   );
 }
