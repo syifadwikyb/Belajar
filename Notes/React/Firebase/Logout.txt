@@ -1,0 +1,35 @@
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../Config/Firebase"; // pastikan pathnya benar
+
+export default function NavMain() {
+  const navigate = useNavigate();
+
+  // Fungsi untuk logout
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate("/login"); // Redirect ke halaman login setelah logout
+    } catch (error) {
+      console.error("Logout Error:", error);
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+Tombol
+<button
+              onClick={handleLogout}
+              className="text-lg font-semibold px-5 py-2 rounded-xl transition text-black hover:bg-white hover:text-secondary"
+            >
+              Logout
+            </button>
