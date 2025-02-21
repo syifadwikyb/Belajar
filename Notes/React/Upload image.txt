@@ -1,0 +1,47 @@
+import { useState } from "react";
+
+export default function ProfileMain() {
+  const [formData, setFormData] = useState({
+    profilePic: "", // Untuk menyimpan URL gambar
+  });
+
+  // Handle perubahan input teks
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle unggah gambar
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0]; // Ambil file pertama
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({ ...formData, profilePic: reader.result }); // Simpan URL gambar ke state
+      };
+      reader.readAsDataURL(file); // Baca file sebagai URL
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center p-6 bg-gray-100 min-h-screen">
+      <h1 className="text-3xl font-bold mb-6">Profile</h1>
+
+      {/* Gambar Profil */}
+      <div className="relative w-40 h-40 mb-4">
+        <img
+          src={formData.profilePic || "https://via.placeholder.com/150"} // Default gambar jika belum upload
+          alt="Profile"
+          className="w-full h-full object-cover rounded-full border-2 border-gray-400"
+        />
+      </div>
+
+      {/* Input Unggah Gambar */}
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageUpload}
+        className="mb-4"
+      />
+    </div>
+  );
+}
