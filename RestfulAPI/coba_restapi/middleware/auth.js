@@ -80,9 +80,11 @@ exports.login = function (req, res) {
         }
 
         if (rows.length === 1) {
-            const token = jwt.sign({ id: rows[0].id_users }, config.secret, {
-                expiresIn: 1440
-            });
+            const token = jwt.sign(
+                { id: rows[0].id_users, role: rows[0].role },
+                config.secret,
+                { expiresIn: 1440 }
+            );
 
             const data = {
                 id_user: rows[0].id_users,
