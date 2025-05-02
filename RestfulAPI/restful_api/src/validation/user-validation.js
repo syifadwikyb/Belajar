@@ -6,6 +6,4 @@ const registerUserValidation = Joi.object({
     name: Joi.string().max(100).required()
 })
 
-export {
-    registerUserValidation
-}
+export {registerUserValidation};

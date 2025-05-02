@@ -19,7 +19,7 @@ export default function App() {
       <input className="px-6 py-2 rounded-md"
         type="text"
         placeholder="Cari Film..."
-        onChange={(e) => search(e.target.value)}
+        onChange={(e) => search(e.target.value)}        
       />
       <div className=" rounded-lg">
         <div className="grid grid-cols-4 gap-6">
@@ -31,14 +31,25 @@ export default function App() {
                 alt={movie.title}
               />
               <p className="Movie-rate">{movie.release_date}</p>
-              <p className="Movie-rate">{movie.vote_average}</p>
-            </div>
+              <p className="Movie-rate">{movie.vote_average}</p>            
+            </div>          
           ))}
-        </div>
+        </div>    
       </div>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
 
 // VERSI LENGKAP
 // export default function App() {
