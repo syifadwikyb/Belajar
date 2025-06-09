@@ -1,5 +1,5 @@
 def hitung_rsa():
-    print("Program Enkripsi dan Dekripsi RSA")
+    print("Syifa Dwiky Basamala\n21120122120008\nProgram Enkripsi dan Dekripsi RSA")
     print("=" * 40)
     
     # Input parameter RSA
@@ -58,7 +58,7 @@ def hitung_rsa():
     print(f"Kunci privat d: {d}")
     
     # Masukkan nilai plaintext
-    m = int(input("\nMasukkan nilai plaintext (m): "))
+    m = int(input("\nMasukkan nilai m: "))
     
     if m >= n:
         print(f"Error: Nilai plaintext ({m}) harus lebih kecil dari n ({n})")
