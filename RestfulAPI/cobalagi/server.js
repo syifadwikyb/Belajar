@@ -5,9 +5,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Import routes
-const authRoutes = require('./src/routes/auth');
-const userRoutes = require('./src/routes/user');
-const itemRoutes = require('./src/routes/items');
+const authRoutes = require('./src/routes/authRoute');
+const userRoutes = require('./src/routes/userRoute');
+const itemRoutes = require('./src/routes/itemsRoute');
 
 // Middleware
 app.use(express.json()); // Untuk parsing body request JSON
@@ -15,7 +15,7 @@ app.use(express.json()); // Untuk parsing body request JSON
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
-app.use('/api/items', itemRoutes); // Untuk CRUD data umum
+app.use('/api/items', itemRoutes);
 
 // Basic root route
 app.get('/', (req, res) => {
