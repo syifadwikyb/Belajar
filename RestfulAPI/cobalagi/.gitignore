@@ -1,0 +1,17 @@
+# .gitignore
+
+# Firebase Service Account Key
+serviceAccountKey.json
+# Jika Anda menyimpannya di subfolder 'src', tambahkan juga:
+src/serviceAccountKey.json
+
+# Variabel Lingkungan
+.env
+
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
