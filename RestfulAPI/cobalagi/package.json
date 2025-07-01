@@ -1,0 +1,20 @@
+{
+  "name": "cobalagi",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.2",
+    "axios": "^1.10.0",
+    "dotenv": "^17.0.0",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.4.0",
+    "nodemon": "^3.1.10"
+  }
+}
