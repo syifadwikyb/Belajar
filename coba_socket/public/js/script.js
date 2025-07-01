@@ -1,10 +1,13 @@
 const socket = io();
 
+// Mendapatkan lokasi pengguna secara real-time
 if (navigator.geolocation) {
-    navigator.geolocation.watchPosition((position) => {
-            const {latitude, longitude} = position.coords;
-            socket.emit("send-location", {latitude, longitude});
-        }, (error) => {
+    navigator.geolocation.watchPosition(
+        (position) => {
+            const { latitude, longitude } = position.coords;
+            socket.emit("send-location", { latitude, longitude });
+        },
+        (error) => {
             console.error(error);
         },
         {
@@ -12,31 +15,35 @@ if (navigator.geolocation) {
             timeout: 5000,
             maximumAge: 0,
         }
-    )
+    );
 }
 
+// Menampilkan peta menggunakan Leaflet.js
 const map = L.map("map").setView([0, 0], 16);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; OpenStreetMap contributors",
 }).addTo(map);
 
+// Menyimpan marker setiap pengguna
 const markers = {};
 
-socket.on("receiveLocation", function(data) {
-    const {id, latitude, longitude} = data;
+// Menerima lokasi dari server dan menampilkannya di peta
+socket.on("receiveLocation", (data) => {
+    const { id, latitude, longitude } = data;
     map.setView([latitude, longitude]);
-    if (markers[id]){
+
+    if (markers[id]) {
         markers[id].setLatLng([latitude, longitude]);
-    }
-    else {
+    } else {
         markers[id] = L.marker([latitude, longitude]).addTo(map);
     }
-})
+});
 
-socket.on("Client disconnected", function(id) {
-    if (markers[id]){
+// Menghapus marker saat pengguna disconnect
+socket.on("Client disconnected", (id) => {
+    if (markers[id]) {
         map.removeLayer(markers[id]);
         delete markers[id];
     }
-})
+});
