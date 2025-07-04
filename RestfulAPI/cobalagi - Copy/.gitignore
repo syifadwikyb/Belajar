@@ -1,7 +1,7 @@
 # .gitignore
 
 # Firebase Service Account Key
-src/serviceAccountKey.json
+serviceAccountKey.json
 # Jika Anda menyimpannya di subfolder 'src', tambahkan juga:
 src/serviceAccountKey.json
 
