@@ -12,8 +12,8 @@ export default function App() {
       {/* View sebagai container utama dengan styling Tailwind CSS */}
       {/* Menambahkan kelas 'flex-1', 'justify-center', 'items-center', dan 'p-6' */}
       {/* agar konten berada di tengah dan memiliki padding */}
-      <View className="flex-1 justify-center items-center p-6">
-        <Text className="text-4xl font-extrabold text-indigo-700 mb-4  text-center">
+      <View className="flex-1 justify-center items-center p-6 bg-black">
+        <Text className="text-4xl font-extrabold text-indigo-700 mb-4 text-center">
           Hello world
         </Text>
       </View>

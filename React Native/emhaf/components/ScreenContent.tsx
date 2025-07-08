@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
-
 import { EditScreenInfo } from './EditScreenInfo';
+import { Container } from './Container';
 
 type ScreenContentProps = {
   title: string;
@@ -10,17 +10,13 @@ type ScreenContentProps = {
 
 export const ScreenContent = ({ title, path, children }: ScreenContentProps) => {
   return (
-    <View className={styles.container}>
-      <Text className={styles.title}>{title}</Text>
-      <Text className='w-full p-2 text-xl text-center text-white bg-red-800'>alos</Text>
-      <View className={styles.separator} />
-      <EditScreenInfo path={path} />
-      {children}
-    </View>
+    <Container>
+      <View className="items-center w-full">
+        <Text className="text-4xl font-bold text-center">{title}</Text>
+        <View className="h-[1px] my-7 w-4/5 bg-gray-200" />
+        <EditScreenInfo path={path} />
+        {children}
+      </View>
+    </Container>
   );
-};
-const styles = {
-  container: `items-center flex-1 justify-center`,
-  separator: `h-[1px] my-7 w-4/5 bg-gray-200`,
-  title: `text-4xl font-bold`,
 };
