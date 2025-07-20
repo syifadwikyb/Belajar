@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tedunan Asri: Inovasi dari Desa untuk Desa</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Menggunakan font Inter sebagai default */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Efek latar belakang gradien halus */
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #111827 50%, #000000 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Header & Navigasi -->
+    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-blue-900/10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white tracking-wider">
+                <i class="fas fa-leaf text-blue-400"></i> Tedunan <span class="text-blue-400">Asri</span>
+            </a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#masalah" class="hover:text-blue-400 transition duration-300">Masalah Sampah</a>
+                <a href="#solusi" class="hover:text-blue-400 transition duration-300">Inovasi Kita</a>
+                <a href="#toga" class="hover:text-blue-400 transition duration-300">Apotek Hidup</a>
+                <a href="#aksi" class="hover:text-blue-400 transition duration-300">Ayo Bergerak</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+            <a href="#masalah" class="block px-6 py-3 text-center hover:bg-blue-900 transition duration-300">Masalah Sampah</a>
+            <a href="#solusi" class="block px-6 py-3 text-center hover:bg-blue-900 transition duration-300">Inovasi Kita</a>
+            <a href="#toga" class="block px-6 py-3 text-center hover:bg-blue-900 transition duration-300">Apotek Hidup</a>
+            <a href="#aksi" class="block px-6 py-3 text-center hover:bg-blue-900 transition duration-300">Ayo Bergerak</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Halaman Utama (Beranda) -->
+        <section id="beranda" class="min-h-screen flex items-center gradient-bg">
+            <div class="container mx-auto px-6 text-center">
+                <div class="bg-black/50 p-8 md:p-12 rounded-2xl shadow-2xl max-w-4xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
+                        Selamat Datang di Portal Inovasi <span class="text-blue-400">Warga Tedunan</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-8">
+                        Solusi Mandiri untuk Lingkungan Bersih dan Masyarakat Sehat.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-2xl mx-auto">
+                        <div class="bg-gray-800/50 p-4 rounded-lg">
+                            <h3 class="font-bold text-blue-400 mb-2">Visi Kami</h3>
+                            <p class="text-gray-300 text-sm">Menjadikan Desa Tedunan sebagai contoh desa mandiri dalam pengelolaan sampah dan pemanfaatan sumber daya alam.</p>
+                        </div>
+                        <div class="bg-gray-800/50 p-4 rounded-lg">
+                            <h3 class="font-bold text-blue-400 mb-2">Misi Kami</h3>
+                            <p class="text-gray-300 text-sm">Mendidik, menggerakkan, dan memberdayakan masyarakat melalui inovasi yang mudah diterapkan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Masalah Kita: Dampak Penumpukan Sampah -->
+        <section id="masalah" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Mengapa Sampah Jadi Masalah Serius?</h2>
+                    <p class="text-gray-400 mt-2">Memahami dampak sampah adalah langkah pertama untuk peduli.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 hover:bg-blue-900/30 transition-all duration-300">
+                        <div class="text-blue-400 text-4xl mb-4"><i class="fas fa-heartbeat"></i></div>
+                        <h3 class="font-bold text-xl mb-2">Dampak Kesehatan</h3>
+                        <p class="text-gray-400">Tumpukan sampah menjadi sarang lalat, nyamuk demam berdarah, dan bakteri penyebab penyakit diare atau kulit.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 hover:bg-blue-900/30 transition-all duration-300">
+                        <div class="text-blue-400 text-4xl mb-4"><i class="fas fa-seedling"></i></div>
+                        <h3 class="font-bold text-xl mb-2">Dampak Lingkungan</h3>
+                        <p class="text-gray-400">Pencemaran tanah dan air, serta bau tidak sedap yang mengganggu kenyamanan dan merusak keindahan desa.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:scale-105 hover:bg-blue-900/30 transition-all duration-300">
+                        <div class="text-blue-400 text-4xl mb-4"><i class="fas fa-users"></i></div>
+                        <h3 class="font-bold text-xl mb-2">Dampak Sosial</h3>
+                        <p class="text-gray-400">Lingkungan yang terlihat kumuh dapat menurunkan semangat warga dan citra positif desa kita.</p>
+                    </div>
+                </div>
+                <div class="mt-16 bg-blue-900/20 border border-blue-800 text-center p-8 rounded-2xl max-w-4xl mx-auto">
+                    <h3 class="font-bold text-2xl text-blue-400 mb-2">"Pesan Peduli Lingkungan dari Tedunan"</h3>
+                    <p class="text-gray-300 italic text-lg">"Sebuah plastik yang kita buang hari ini, akan tetap ada hingga puluhan tahun mendatang. Mari bijak kelola sampah demi masa depan anak cucu kita. Kebersihan desa adalah cerminan warganya."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Solusi & Inovasi Tedunan -->
+        <section id="solusi" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Solusi & Inovasi Tedunan</h2>
+                    <p class="text-gray-400 mt-2">Karya nyata dari warga, untuk warga.</p>
+                </div>
+                
+                <!-- 3.1 Alat Pembakar Sampah -->
+                <div class="bg-gray-900 p-8 rounded-2xl mb-12 shadow-xl">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-4"><i class="fas fa-fire-alt mr-2"></i>Inovasi Unggulan: Insinerator Sampah Minim Asap</h3>
+                    <p class="text-gray-400 mb-6">Solusi untuk sampah anorganik yang sulit didaur ulang, mengurangi asap beracun dari pembakaran terbuka dan mengubah sampah menjadi abu yang lebih sedikit.</p>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-semibold text-xl mb-3 text-white">Panduan Pembuatan</h4>
+                            <ol class="list-decimal list-inside space-y-2 text-gray-400">
+                                <li><span class="font-semibold text-gray-300">Alat & Bahan:</span> Siapkan drum bekas, pipa besi, bor, alat las, dan engsel.</li>
+                                <li><span class="font-semibold text-gray-300">Perakitan:</span> Buat lubang udara di bawah, pintu di bagian tengah, dan pasang cerobong asap di atas.</li>
+                                <li><span class="font-semibold text-gray-300">Finishing:</span> Pastikan semua sambungan las rapat untuk pembakaran yang efisien.</li>
+                                <li><span class="font-semibold text-gray-300">Video Tutorial:</span> (Sematkan video YouTube di sini jika ada)</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-xl mb-3 text-white">Panduan Penggunaan</h4>
+                             <ul class="list-disc list-inside space-y-2 text-gray-400">
+                                <li><span class="font-semibold text-gray-300">Suhu Ideal:</span> Jaga suhu di atas 600°C untuk pembakaran sempurna. Cirinya adalah api membara oranye terang.</li>
+                                <li><span class="font-semibold text-gray-300">Tips:</span> Masukkan sampah kering terlebih dahulu. Jangan memasukkan sampah basah dalam jumlah banyak sekaligus.</li>
+                                <li><span class="font-semibold text-gray-300">Keamanan:</span> Letakkan alat di tempat yang aman, jauh dari bahan mudah terbakar.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3.2 Pupuk Kompos -->
+                <div class="bg-gray-900 p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-green-400 mb-4"><i class="fas fa-recycle mr-2"></i>Dari Sampah Organik Menjadi Pupuk</h3>
+                    <p class="text-gray-400 mb-6">Mengubah sampah dapur dan kebun menjadi nutrisi berharga untuk menyuburkan tanah pekarangan kita.</p>
+                    <ol class="grid md:grid-cols-2 lg:grid-cols-5 gap-6 text-center">
+                        <li class="bg-gray-800 p-4 rounded-lg">
+                            <div class="text-3xl text-green-400 mb-2">1</div>
+                            <h4 class="font-semibold text-white">Siapkan Wadah</h4>
+                            <p class="text-sm text-gray-400">Gunakan karung, ember bekas, atau buat lubang di tanah.</p>
+                        </li>
+                        <li class="bg-gray-800 p-4 rounded-lg">
+                            <div class="text-3xl text-green-400 mb-2">2</div>
+                            <h4 class="font-semibold text-white">Bahan Hijau</h4>
+                            <p class="text-sm text-gray-400">Sisa sayur, buah, ampas kopi (sumber nitrogen).</p>
+                        </li>
+                        <li class="bg-gray-800 p-4 rounded-lg">
+                            <div class="text-3xl text-green-400 mb-2">3</div>
+                            <h4 class="font-semibold text-white">Bahan Coklat</h4>
+                            <p class="text-sm text-gray-400">Daun kering, serbuk gergaji, kardus (sumber karbon).</p>
+                        </li>
+                        <li class="bg-gray-800 p-4 rounded-lg">
+                            <div class="text-3xl text-green-400 mb-2">4</div>
+                            <h4 class="font-semibold text-white">Susun & Jaga</h4>
+                            <p class="text-sm text-gray-400">Selang-seling lapisan, jaga agar tetap lembab (tidak becek).</p>
+                        </li>
+                        <li class="bg-gray-800 p-4 rounded-lg">
+                            <div class="text-3xl text-green-400 mb-2">5</div>
+                            <h4 class="font-semibold text-white">Tanda Matang</h4>
+                            <p class="text-sm text-gray-400">Berwarna gelap, berbau tanah, dan tidak panas saat dipegang.</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Manfaat Tanaman Obat Keluarga (TOGA) -->
+        <section id="toga" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Apotek Hidup di Pekarangan Kita</h2>
+                    <p class="text-gray-400 mt-2">Manfaatkan lahan sekitar rumah untuk kemandirian kesehatan keluarga.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="bg-gray-800 p-6 rounded-xl text-center shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/200x200/eab308/ffffff?text=Jahe" alt="Jahe" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-yellow-500">
+                        <h3 class="font-bold text-xl text-yellow-400">Jahe</h3>
+                        <p class="text-gray-400">Meredakan batuk dan masuk angin.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-xl text-center shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/200x200/f97316/ffffff?text=Kunyit" alt="Kunyit" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-orange-500">
+                        <h3 class="font-bold text-xl text-orange-400">Kunyit</h3>
+                        <p class="text-gray-400">Anti-peradangan dan bumbu masak.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-xl text-center shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/200x200/84cc16/ffffff?text=Lidah+Buaya" alt="Lidah Buaya" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-lime-500">
+                        <h3 class="font-bold text-xl text-lime-400">Lidah Buaya</h3>
+                        <p class="text-gray-400">Perawatan luka ringan & rambut.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-xl text-center shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/200x200/a855f7/ffffff?text=Kencur" alt="Kencur" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-purple-500">
+                        <h3 class="font-bold text-xl text-purple-400">Kencur</h3>
+                        <p class="text-gray-400">Mengobati batuk & penambah nafsu makan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Kreasi & Usaha Desa -->
+        <section id="kreasi" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/ec4899/ffffff?text=Kreasi+Lilin" alt="Kreasi Lilin Aromaterapi" class="rounded-2xl shadow-2xl w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Dari Limbah Menjadi Berkah</h2>
+                    <h3 class="text-2xl font-semibold text-pink-400 mb-4">Kreasi Lilin Aromaterapi</h3>
+                    <p class="text-gray-400 mb-4">Memanfaatkan minyak jelantah yang sudah disaring untuk membuat produk bernilai jual. Ini adalah cara kreatif mengurangi limbah sekaligus membuka peluang usaha kecil bagi ibu-ibu dan pemuda desa.</p>
+                    <button class="bg-pink-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-pink-700 transition duration-300">
+                        <i class="fas fa-info-circle mr-2"></i> Info Pelatihan & Pemesanan
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Ayo Bergerak! (Halaman Aksi & Komunitas) -->
+        <section id="aksi" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Kontribusi Anda Sangat Berarti!</h2>
+                <p class="text-gray-400 mt-2 mb-8 max-w-2xl mx-auto">Mari bergabung dalam kegiatan positif untuk membangun Desa Tedunan yang lebih baik. Bersama kita bisa!</p>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
+                    <div class="bg-gray-800 p-6 rounded-xl">
+                        <h3 class="font-bold text-xl text-blue-400 mb-3"><i class="fas fa-calendar-alt mr-2"></i>Jadwal Kegiatan</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><strong>Gotong Royong:</strong> Setiap hari Minggu pertama, Pukul 07.00 WIB.</li>
+                            <li><strong>Pelatihan Kompos:</strong> Setiap hari Sabtu minggu kedua, Pukul 15.00 WIB di Balai Desa.</li>
+                            <li><strong>Demo Insinerator:</strong> Diumumkan di grup warga.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-xl">
+                        <h3 class="font-bold text-xl text-blue-400 mb-3"><i class="fas fa-phone-alt mr-2"></i>Narahubung</h3>
+                        <p class="text-gray-300">Untuk informasi lebih lanjut mengenai kegiatan atau ingin bergabung, silakan hubungi:</p>
+                        <p class="font-semibold text-white mt-2">Bapak Fulan - 0812-3456-7890</p>
+                    </div>
+                </div>
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-white mb-4">Galeri Kegiatan Kita</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <img src="https://placehold.co/400x300/10b981/ffffff?text=Gotong+Royong" alt="Gotong Royong" class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/3b82f6/ffffff?text=Pelatihan" alt="Pelatihan Kompos" class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/ef4444/ffffff?text=Kerja+Bakti" alt="Kerja Bakti" class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/f59e0b/ffffff?text=Warga+Kompak" alt="Warga Kompak" class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-gray-700">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-400">
+            <p>&copy; 2024 Tedunan Asri. Dibuat dengan semangat gotong royong oleh warga Desa Tedunan.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript untuk menu mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Menutup menu mobile saat link di-klik
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+    </script>
+
+</body>
+</html>
