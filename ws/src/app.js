@@ -1,29 +1,60 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
+import { createServer } from "http";
+
+// Import Konfigurasi & Koneksi
+import sequelize from './api/config/db.js';
+import setupAssociations from './api/config/Associations.js';
+
+// Import Routes
 import authRoutes from './api/routes/authRoutes.js';
 import driverRoutes from './api/routes/driverRoutes.js';
 import busRoutes from "./api/routes/busRoutes.js";
-import { createServer } from "http";
+import halteRoutes from './api/routes/halteRoutes.js';
+import jalurRoutes from './api/routes/jalurRoutes.js';
+
+// Import Modul Lain
 import initSocket from './ws/socket.js';
-import "./mqtt/mqttClient.js";
+import "./mqtt/mqttClient.js"; // Inisialisasi MQTT Client
 
+// --- Konfigurasi Awal ---
 dotenv.config();
-
 const app = express();
-app.use(express.json());
 
-// Route utama
+// --- Middleware ---
+app.use(express.json()); // Middleware untuk parsing JSON
+app.use(cors()); // Middleware untuk mengizinkan request dari origin lain (misal: React di port 3000)
+
+// --- Daftarkan Routes API ---
 app.use('/api/auth', authRoutes);
 app.use('/api/drivers', driverRoutes);
 app.use('/api/bus', busRoutes);
+app.use('/api/halte', halteRoutes);
+app.use('/api/jalur', jalurRoutes);
 
-// Buat HTTP server dari express
+// --- Setup Server ---
 const server = createServer(app);
-
-// Inisialisasi socket.io
 initSocket(server);
 
-const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-});
+const startServer = async () => {
+    try {
+        await sequelize.authenticate();
+        console.log('✅ Koneksi database berhasil.');
+
+        setupAssociations();
+        console.log('🔗 Hubungan antar model berhasil disetel.');
+
+        const PORT = process.env.PORT || 5000;
+        server.listen(PORT, () => {
+            console.log(`🚀 Server berjalan di port ${PORT}`);
+        });
+
+    } catch (error) {
+        console.error('❌ Gagal terhubung ke database atau memulai server:', error);
+    }
+};
+
+// --- Jalankan Server ---
+startServer();
+

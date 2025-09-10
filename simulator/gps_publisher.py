@@ -31,7 +31,7 @@ while True:
 
     # siapkan data
     data = {
-        "bus_id": 1,
+        "bus_id": 3,
         "latitude": round(current_lat, 6),
         "longitude": round(current_lon, 6),
         "speed": random.randint(20, 60)
