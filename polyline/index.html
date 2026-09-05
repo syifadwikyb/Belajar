@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Export Encoded Polyline - Leaflet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    html,body { height:100%; margin:0; }
+    #map { height:100%; width:100%; }
+    .panel {
+      position: absolute;
+      left: 10px; top: 10px;
+      background: #fff; padding:12px;
+      border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.2);
+      z-index:1000; font-family: sans-serif; max-width:360px;
+    }
+    button { margin:6px 6px 0 0; padding:8px 10px; border:none; border-radius:6px; cursor:pointer; background:#2563eb; color:#fff; }
+    pre { background:#f4f4f4; padding:8px; border-radius:6px; max-height:160px; overflow:auto; }
+  </style>
+</head>
+<body>
+
+<div class="panel">
+  <strong>Buat & Export Encoded Polyline</strong>
+  <p>Klik di peta untuk menambah titik. Titik dapat dihapus dengan tombol <em>Hapus Rute</em>.</p>
+
+  <button id="resetBtn">Hapus Rute</button>
+  <button id="exportEncodedBtn">Export Encoded</button>
+  <button id="exportArrayBtn">Export Array</button>
+  <button id="exportGeojsonBtn">Export GeoJSON</button>
+
+  <h4>Hasil:</h4>
+  <label>Encoded:</label>
+  <pre id="encodedOutput" style="white-space:pre-wrap; word-break:break-all;"></pre>
+  <label>Array (lat,lng):</label>
+  <pre id="arrayOutput"></pre>
+  <label>GeoJSON (LineString):</label>
+  <pre id="geojsonOutput"></pre>
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  // Inisialisasi peta
+  var map = L.map('map').setView([-6.973, 110.425], 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    maxZoom: 19
+  }).addTo(map);
+
+  // State
+  var routePoints = [];
+  var markers = [];
+  var polyline = L.polyline([], { color: 'blue', weight: 5 }).addTo(map);
+
+  // Tambah titik saat map diklik
+  map.on('click', function(e) {
+    var latlng = e.latlng;
+    routePoints.push([latlng.lat, latlng.lng]);
+
+    var m = L.marker(latlng).addTo(map).bindPopup('Titik ' + routePoints.length);
+    markers.push(m);
+
+    polyline.setLatLngs(routePoints);
+    updateOutputs();
+  });
+
+  // Reset / hapus rute
+  document.getElementById('resetBtn').addEventListener('click', function() {
+    routePoints = [];
+    markers.forEach(function(m){ map.removeLayer(m); });
+    markers = [];
+    polyline.setLatLngs([]);
+    clearOutputs();
+  });
+
+  // Export array
+  document.getElementById('exportArrayBtn').addEventListener('click', function() {
+    document.getElementById('arrayOutput').textContent = JSON.stringify(routePoints, null, 2);
+  });
+
+  // Export GeoJSON
+  document.getElementById('exportGeojsonBtn').addEventListener('click', function() {
+    var geojson = {
+      type: "Feature",
+      geometry: {
+        type: "LineString",
+        coordinates: routePoints.map(function(p){ return [p[1], p[0]]; }) // GeoJSON: [lng, lat]
+      },
+      properties: {}
+    };
+    document.getElementById('geojsonOutput').textContent = JSON.stringify(geojson, null, 2);
+  });
+
+  // Export encoded polyline (Google Polyline Algorithm)
+  document.getElementById('exportEncodedBtn').addEventListener('click', function() {
+    if (routePoints.length === 0) {
+      alert('Belum ada titik untuk diexport.');
+      return;
+    }
+    var encoded = encodePolyline(routePoints);
+    document.getElementById('encodedOutput').textContent = encoded;
+  });
+
+  function clearOutputs(){
+    document.getElementById('encodedOutput').textContent = '';
+    document.getElementById('arrayOutput').textContent = '';
+    document.getElementById('geojsonOutput').textContent = '';
+  }
+
+  function updateOutputs(){
+    // auto-update minimal: show array
+    document.getElementById('arrayOutput').textContent = JSON.stringify(routePoints, null, 2);
+    // clear encoded so user intentionally exports encoded when ready
+    document.getElementById('encodedOutput').textContent = '';
+    document.getElementById('geojsonOutput').textContent = '';
+  }
+
+  // --------- Encoder function (Google encoded polyline algorithm) ----------
+  // input: array of [lat, lng] with decimal degrees
+  // returns: encoded polyline string
+  function encodePolyline(coords){
+    var result = '';
+    var prevLat = 0;
+    var prevLng = 0;
+
+    for (var i = 0; i < coords.length; i++) {
+      var lat = coords[i][0];
+      var lng = coords[i][1];
+
+      var latE5 = Math.round(lat * 1e5);
+      var lngE5 = Math.round(lng * 1e5);
+
+      var dLat = latE5 - prevLat;
+      var dLng = lngE5 - prevLng;
+
+      result += encodeSignedNumber(dLat) + encodeSignedNumber(dLng);
+
+      prevLat = latE5;
+      prevLng = lngE5;
+    }
+    return result;
+  }
+
+  function encodeSignedNumber(num) {
+    var sNum = num << 1;
+    if (num < 0) {
+      sNum = ~(sNum);
+    }
+    return encodeNumber(sNum);
+  }
+
+  function encodeNumber(num) {
+    var encoded = '';
+    while (num >= 0x20) {
+      var nextValue = (0x20 | (num & 0x1f)) + 63;
+      encoded += String.fromCharCode(nextValue);
+      num >>= 5;
+    }
+    num += 63;
+    encoded += String.fromCharCode(num);
+    return encoded;
+  }
+  // -----------------------------------------------------------------------
+
+  // Jika ingin, kamu bisa menambahkan undo terakhir dengan menghapus marker terakhir:
+  // Contoh (tidak ditampilkan di UI): function undoLast(){ ... }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambak Garam Tedunan</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f2f2f2;
+    }
+
+    header {
+      background-color: #0077b6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background: #023e8a;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #023e8a;
+    }
+
+    #map {
+      height: 400px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      margin: 10px;
+      border-radius: 8px;
+    }
+
+    .product-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .product-table th,
+    .product-table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #023e8a;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Tambak Garam Tedunan</h1>
+    <p>Digitalisasi Informasi & Promosi Tambak Garam Berbasis Peta</p>
+  </header>
+
+  <nav>
+    <a href="#beranda">Beranda</a>
+    <a href="#peta">Peta</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#produk">Produk</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+
+  <section id="beranda">
+    <h2>Selamat Datang</h2>
+    <p>Website ini menyajikan informasi lokasi tambak garam di Desa Tedunan, mempromosikan produk garam lokal, serta mendukung digitalisasi potensi desa.</p>
+  </section>
+
+  <section id="peta">
+    <h2>Peta Tambak Garam</h2>
+    <div id="map"></div>
+  </section>
+
+  <section id="galeri">
+    <h2>Galeri</h2>
+    <div class="gallery">
+      <img src="https://source.unsplash.com/300x200/?salt" alt="Garam">
+      <img src="https://source.unsplash.com/301x200/?salt-farm" alt="Tambak">
+      <img src="https://source.unsplash.com/302x200/?sea-salt" alt="Panen">
+    </div>
+  </section>
+
+  <section id="produk">
+    <h2>Katalog Produk Garam</h2>
+    <table class="product-table">
+      <tr>
+        <th>Nama Produk</th>
+        <th>Jenis</th>
+        <th>Harga</th>
+        <th>Keterangan</th>
+      </tr>
+      <tr>
+        <td>Garam Halus</td>
+        <td>Konsumsi</td>
+        <td>Rp 7.000 / Kg</td>
+        <td>Siap kirim</td>
+      </tr>
+      <tr>
+        <td>Garam Krosok</td>
+        <td>Industri</td>
+        <td>Rp 5.000 / Kg</td>
+        <td>Stok melimpah</td>
+      </tr>
+    </table>
+  </section>
+
+  <section id="tentang">
+    <h2>Tentang Website</h2>
+    <p>Website ini dibuat untuk mendigitalisasi informasi tambak garam di Desa Tedunan, Demak. Bertujuan memperkenalkan produk lokal dan membuka akses informasi berbasis teknologi kepada masyarakat luas.</p>
+  </section>
+
+  <section id="kontak">
+    <h2>Kontak</h2>
+    <p>Email: tambaktedunan@gmail.com</p>
+    <p>WhatsApp Admin: 08xxxxxxxxxx</p>
+    <p>Instagram: @tambakgaramtedunan</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Tambak Garam Tedunan
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([-6.928, 110.634], 15); // Koordinat Tedunan
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // Tambak sample
+    L.marker([-6.928, 110.634]).addTo(map)
+      .bindPopup("<b>Tambak-01</b><br>Luas: 1000 m²<br>Produksi: ±1.2 ton/bln<br>Jenis: Garam Halus");
+
+    L.marker([-6.929, 110.635]).addTo(map)
+      .bindPopup("<b>Tambak-02</b><br>Luas: 800 m²<br>Produksi: ±1 ton/bln<br>Jenis: Garam Krosok");
+  </script>
+</body>
+</html>

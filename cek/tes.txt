@@ -1,0 +1,88 @@
+npm create vite@latest cek
+npm install tailwindcss @tailwindcss/vite
+npm install axios
+npm install json-server
+
+--- Buat db.json di luar src ---
+{
+    "students": [
+        {
+            "id": 1,
+            "name": "John Doe",
+            "age": 20,
+            "major": "Computer Science"
+        },        
+    ]
+}
+
+--- Jalankan db.json ---
+npx json-server db.json --port 3002
+
+--- Konfigurasi tailwind ---
+import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
+})
+
+// Selanjutnya jadikan tailwindcss agar di global dengan memindahkan di index.css
+@import "tailwindcss";
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+function App() {
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    getStudents();
+  }, []);
+
+  const getStudents = async () => {
+    const response = await axios.get("http://localhost:3002/students");
+    setStudents(response.data);
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto mt-10">
+      <h1 className="text-3xl font-bold mb-5">
+        Student Management
+      </h1>
+
+      <table className="w-full border border-gray-300">
+        <thead className="bg-gray-200">
+          <tr>
+            <th className="border p-2">No</th>
+            <th className="border p-2">Nama</th>
+            <th className="border p-2">Jurusan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {students.map((student, index) => (
+            <tr key={student.id}>
+              <td className="border p-2 text-center">
+                {index + 1}
+              </td>
+
+              <td className="border p-2">
+                {student.name}
+              </td>
+
+              <td className="border p-2">
+                {student.major}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default App;
